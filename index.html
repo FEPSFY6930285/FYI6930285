@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 
 <html>
-  <head>
-    <img src="WebBanner2023.png" alt="Banner" width="900" height="300">
+    <head>
+    <img src="WebBanner2023.png" alt="Banner" width="1200" height="300">
       <h1><b>ENG0018 Computer Laboratory 2025/26</b></h1>
       <h2>Student URN: 6930285</h2>
     <hr>
-    <h2 style ="font-family:calibri;"><b>Conference paper: Bridge Deck Repairs</b><h2>
+    <h2 style ="font-family:calibri;"><b>Conference paper: Quantum sensors in deep sea navigation</b><h2>
     <hr>
 
     <!style for tables>
@@ -26,109 +26,112 @@
         tr:nth-child(even) {
           background-color: #dddddd;
         }
-      
+        
       </style>
     <style>
-p.ex1 {
-  margin-left: 250px;
-}
-</style>
+      p.ex1 {
+        margin-left: 250px;
+      }
+    </style>
     </head>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-  <style>
-    .mySlides {display::none;}
-  </style>
-<p class="ex1">
-<pre>
-  Active Learning (Angluin, 1988, Cohn et al., 1994) is a paradigm where a concept is learnt by an
-  intelligent machine through the interaction of an oracle with the machine system, over a sequence of
-  learning epochs. A distinctive component in an active system is the querying strategy, used to sample
-  candidate training instances from a pool and evaluate them for informativeness, i.e., their potential
-  to improve the classification model. Various strategies have been proposed including; Query by
-  Committee (Seung et al., 1992), Monte Carlo estimation (Roy and McCallum, 2001), uncertainty
-  sampling (Lewis and Gale, 1994) and version space reduction (margin sampling) (Tong and Koller,
-  2001). Irrespective of how the most informative pattern instances are chosen at each epoch they are
-  presented for labeling, to a machine (database) or human oracle that has knowledge of the class
-  labels. After adding the newly labeled instances to the current training set, a revised model is
-  subsequently induced. A goal of this process is to achieve an efficient, incremental advancement of
-  learning at each epoch. The process is continued until some stopping criterion has been met, such as
-  reaching a stage where information from the selected instances is contrary to the model, causing the
-  classifier confidence to drop, as in Vlachos (2008).
-</pre>
-</p>
+  
+  <body>
+    <meta name = "viewport" contect="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https:www.w3schools.com/w3css/4/w3.css">
+    <style>
+      .mySlides {display:none}
+    </style>
 
-<!table of contents>
-<table>
+    <p class="ex1">
+    <pre>
+      Text Text Text!
+    </pre>
+    </p>
 
-<tr>
-  <th><h3>Table of contents</h3></th>
-</tr>
-<tr>
-  <td><a href="'#Abstract">Abstract</td>
-</tr>
-<tr>
-  <td><a href="#Introduction">Introduction</td>
-</tr>
-<tr>
-  <td><a href = "Analysis and discussion"> Analysis and discusssion</td>
-</tr>
-</table>
+    <!table of contents>
+    <table>
+    <tr>
+      <th><h3>Table of contents</h3></th>
+    </tr>
+    <tr>
+      <td><a href="#Abstract">Abstract</td>
+    </tr>
+    <tr>
+      <td><a href="#Introduction">Introduction</td>
+    </tr>
+    <tr>
+      <td><a href="#Analysis and discussion">Analysis and discussion</td>
+    </tr>
 
-<head>
-  <title>My Daily Activities</title>
-  <script type = "text/javascript" src = "https://www.gstatic.com/charts/loader.js></script>
-</head>
-    <div id="chart_div"><div>
-  <script type="text/javascript">
-    google.charts.load ('current', {'packages':['corechart']});
-    google.charts.setOnLoadCallback(drawChart);
-    function drawChart() {
-      var data = google.visualization.arrayToDataTable([
-        ['Task', 'Hours per Day'],
-        ['Work', 8],
-        ['Sleep', 8],
-        ['Eat', 2],
-        ['Study', 4],
-        ['Exercise', 2]
+    <tr>
+      <td><a href="#References">References</td>
+    </tr>
+  </table>
 
-      ]);
+  <div id = "last-updated">Loading last update time...</div>
 
-      var options = {
-        title: 'My Daily Activities'
-      };
+  <button oclick="verifyLastUpdatedTime()" style="display: block; margin: 10px auto; padding: 8px 16px;">
+    Verify Last Modified Time
+  </button>
 
-      var chart = new google.visualization.PieChat(document.getElementByld('chat_div'));
-      chart.draw(data, options);
+  <script>
+    async function getLastUpdatedTime() {
+      const username = "nr0025";
+      const repo = "FY0025";
 
+      const url = "https://api.github.com/repos/$(username)/$(repo)/commits";
+
+      try {
+        const response = await fetch(url, {
+          method: "GET",
+          headers: {
+            "Accept": "application/vnd.github.v3+json",
+          }
+        });
+        if (!response.ok) {
+          throw new Error("Error fetching data: $(response.status) - $(response.statusText)");
+        }
+        const commits = await response.json();
+        if (commits && commits.length > 0) {
+          const lastCommitDate = new Date(commits[0].commit.commiter.date);
+          document.getElementById("last-updated").innerText = "Last Modified Time: $(lastCommitDate.toLocaleString())";
+        } else {
+            document.getElementById("last-updated").innerText = "No commits found in the repository.";
+        }
+      } catch (error) {
+        console.error("Error fetching the last updated time:", error);
+        document.getElementById('last-updated').innerText = "Error fetching updated time. Please check the repository details.";
+      }
     }
+    async function verifyLastUpdatedTime() {
+      document.getElementByID("last-updated").innerText = "Verifying...";
+      await getLastUpdatedTime();
+      alert("Last modified time has been succesfully verified from GitHub API.");
+    }
+    window.onload = getLastUpdatedTime;
   </script>
 
-  <script type = "text/javascript">
-    function drawChart() {
-      var data = new google.visualization.DataTable();
-      data.addColumn('number', 'Age');
-      data.addColumn('number', 'Salary');
+  <p id="totalWordCount"></p>
+  <hr>
+  
+  <script>
+    function displayWordCount(sectionId, outputId) {
+      const text = document.getElementById(sectionId).textContext;
 
-      data.addRows([
-        [25, 400000],
-        [30, 500000],
-        [35, 600000],
-        [40, 750000],
-        [45, 800000],
-        [50, 900000]
-      ]);
+      const wordArray = text.trim().split(/\s+/);
 
-      var options = {
-        title: 'Age vs. Salary',
-        hAxis: {title: 'Age'},
-        vAxis: {title: 'Salary'}
-      };
+      const wordCount = wordArray.length;
 
-      var chart = new google.visualization.ScatterChart(documnet.getElementByld('chart_div'));
-      chart.draw(data, options);
-
+      return wordCount;
     }
 
+    function displayTotalWordCount() {
+      const IntroductionCount = displayWordCount("Introduction_InText");
+      const AnalysisCount = displayWordCount("Analysis_InText");
+      const totalWordCount = IntroductionCount + AnalysisCount;
+      document.getElementById("totalWordCount").innerText = "Total word count: ${totalWordCount}";
+    }
+    window.onload = displayTotalWordCount;
   </script>
+  </body>
 </html>
